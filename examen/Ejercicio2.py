@@ -13,5 +13,5 @@ def ejercicio2JNAQ():
     bonoObJNAQ=salarioMinJNAQ*70/100 
   #Datos de salida
   print("El docente optiene un bono de:",bonoObJNAQ)
-  print("Sueldo mas bono:",salarioMinJNAQ+bonoObJNAQ)
+   print("Sueldo mas bono:",salarioMinJNAQ+bonoObJNAQ)
 ejercicio2JNAQ()
