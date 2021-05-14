@@ -19,9 +19,5 @@ def ejerccicio1JNAQ():
   notafinalJNAQ=nota1JNAQ+nota2JNAQ+nota3JNAQ+nota4JNAQ
   #datos de salida
   print("Su nota final es:",notafinalJNAQ)
-<<<<<<< HEAD
 ejerccicio1JNAQ()
-#> y “menor que” <
-=======
-ejerccicio1JNAQ()
->>>>>>> 2dbc556da37e216582f1ac3450feec4936056931
+
