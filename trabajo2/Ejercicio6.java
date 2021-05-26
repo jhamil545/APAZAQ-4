@@ -4,7 +4,7 @@ public class Ejercicio6 {
     public static void sueldo(){
     //definir variables y Otros
     double salarioFin=1500.00;
-    //proseso
+    //proseso y datos de salida
     for (int años=1;años<=6; años++) {
         salarioFin=(salarioFin*0.1)+salarioFin;
         System.out.println("Su salario anual"+años+ " es: "+salarioFin);

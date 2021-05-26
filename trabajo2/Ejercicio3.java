@@ -7,7 +7,7 @@ public class Ejercicio3 {
    int ncantidad,ncero=0,nmayorcero=0,nmenorcero=0;
    //datos de entrada
 
-  System.out.println("ingrese n cantidad:");
+   System.out.println("ingrese n cantidad:");
    ncantidad=teclado.nextInt();
    //proseso
    int contador=1;

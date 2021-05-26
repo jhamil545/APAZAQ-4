@@ -4,8 +4,10 @@ public class Ejercicio2 {
     int opciones=1;
      static Scanner teclado=new Scanner(System.in);
     public static void hamburguesas() {
+     //definir variables
      String tarjeta;
      double montoT=0;
+     //datos de entrada
        System.out.println("Escoja su hamburguesa");
        String hams="hamurguesa sencilla(S) o dobles(D) o triples(T)"+
         "\n1=S"+
@@ -13,7 +15,8 @@ public class Ejercicio2 {
         "\n3=T"+
         "\n0=Salir";
         System.out.println(hams);
-        int opciones=teclado.nextInt();         
+        int opciones=teclado.nextInt(); 
+     //proceso        
         do {
             switch (opciones) {
                 case 1:montoT=montoT+(20);
@@ -37,6 +40,7 @@ public class Ejercicio2 {
         if (tarjeta.equals("SI")) {
              montoT=montoT+(montoT*0.05);
         }
+        //datos de salida
         System.out.println("el costo final es"+montoT);
     }
     public static void main(String[] args) {

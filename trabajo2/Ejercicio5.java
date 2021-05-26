@@ -6,12 +6,13 @@ public class Ejercicio5 {
     
     int contador=1; 
     long totalA=1;
-    //Datos de entrada y Proceso
+    // Proceso
     while (contador<=365) {
         
         totalA*=3;
         contador++;
     }
+    //Datos de salida
     System.out.println("cuantos dias ahorro "+(contador-1)+":");
     System.out.println("El ahorro en un año es:"+totalA);
     }
