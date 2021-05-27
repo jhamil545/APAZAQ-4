@@ -1,9 +1,14 @@
 package pe.edu.upeu;
 
-import java.util.Scanner;
+//import java.util.Scanner;
+
+import pe.edu.upeu.util.TecladoRead;
 
 public class SubPrograma {
-    Scanner teclado=new Scanner(System.in);
+
+    //Scanner teclado=new Scanner(System.in);
+    TecladoRead teclado=new TecladoRead();
+
     public static int factorial(int numero) {
         int factorialResult=1;
         if(numero>1){
@@ -21,10 +26,10 @@ public class SubPrograma {
         int x, lfx;
         double fx=0;
         //Datos de entrada
-        System.out.println("Ingrese un numero para calcular la funcion exponencial:");
-        x=teclado.nextInt();
-        System.out.println("Ingrese el limite de la funcion exponencial:");
-        lfx=teclado.nextInt();    
+        //System.out.println("Ingrese un numero para calcular la funcion exponencial:");
+        x=teclado.leer(0,"Ingrese un numero para calcular la funcion exponencial:");
+        //System.out.println("Ingrese el limite de la funcion exponencial:");
+        lfx=teclado.leer(0,"Ingrese el limite de la funcion exponencial:");    
         //Proceso
         if(x!=0){
             for (int i = 0; i < lfx; i++) {
