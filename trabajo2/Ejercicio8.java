@@ -2,43 +2,52 @@ import java.util.Scanner;
 class Ejercicio8{
 static Scanner teclado=new Scanner(System.in);
 static void descuentoproduc(){
+
 //Definir variables y otros
+int  nart=1; 
+double precioj=0,preciot=0;
+String desproduc="";
 
-int  nart=1, contador=0; 
-double precioj=0,desproduc=0;
 //datos de entrada
-
-
 System.out.println("¿Cuantos articulos comprara?");
 nart=teclado.nextInt();
-while (contador<=nart) {
-    if(precioj<=200){
-        System.out.println("cual es el precio del articulo");
+
+//proseso
+for (int i = 1; i <=nart; i++) {
+    System.out.println("cual es el precio del articulo "+i);
         precioj=teclado.nextInt();
-        precioj=precioj-(precioj*0.15);
-        desproduc=15;
+
+    if(precioj>=200){
         
+        //preciot=precioj-(precioj*0.15);
+        desproduc="15 %";
+        System.out.println("su descuento es de: "+desproduc);
+        System.out.println("el costo de este articulo es:"+(precioj-(precioj*0.15)));
+        preciot=(precioj-(precioj*0.15))+preciot;
      }
     if (precioj>=100 && precioj<=199){
-        System.out.println("cual es el precio del articulo");
-        precioj=teclado.nextInt();
-        precioj=precioj-(precioj*0.12);
-        desproduc=12;
         
+        //preciot=precioj-(precioj*0.12);
+        desproduc="12 %";
+        System.out.println("su descuento es de: "+desproduc);
+        System.out.println("el costo de este articulo es:"+(precioj-(precioj*0.12)));
+        preciot=(precioj-(precioj*0.12))+preciot;
      }
-    if (precioj<=200) {
-        System.out.println("cual es el precio del articulo");
-        precioj=teclado.nextInt();
-        precioj=precioj-(precioj*0.10);
-        desproduc=10;
-        
+    if (precioj<=100) {
+       
+        //preciot=precioj-(precioj*0.10);
+        desproduc="10 %";
+        System.out.println("su descuento es de: "+desproduc);
+        System.out.println("el costo de este articulo es:"+(precioj-(precioj*0.10)));
+        preciot=(precioj-(precioj*0.10))+preciot;
      }
-     contador++; 
+     
 }
 
+
  //Datos de salida:
-System.out.println("su descuento es de: "+desproduc);
-System.out.println("el costo total es:"+precioj);
+
+System.out.println("el costo total es:"+preciot);
 }
 public static void main(String[] arg){
     descuentoproduc();
