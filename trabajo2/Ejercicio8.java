@@ -4,7 +4,7 @@ static Scanner teclado=new Scanner(System.in);
 static void descuentoproduc(){
 //Definir variables y otros
 
-int  nart=0, contador=0; 
+int  nart=1, contador=0; 
 double precioj=0,desproduc=0;
 //datos de entrada
 
@@ -12,29 +12,33 @@ double precioj=0,desproduc=0;
 System.out.println("¿Cuantos articulos comprara?");
 nart=teclado.nextInt();
 while (contador<=nart) {
-    System.out.println("cual es el precio del articulo");
-    precioj=teclado.nextInt();
     if(precioj<=200){
+        System.out.println("cual es el precio del articulo");
+        precioj=teclado.nextInt();
         precioj=precioj-(precioj*0.15);
         desproduc=15;
         
      }
-    else if (precioj>=100 && precioj<=200){
+    if (precioj>=100 && precioj<=199){
+        System.out.println("cual es el precio del articulo");
+        precioj=teclado.nextInt();
         precioj=precioj-(precioj*0.12);
         desproduc=12;
         
      }
-    else {
+    if (precioj<=200) {
+        System.out.println("cual es el precio del articulo");
+        precioj=teclado.nextInt();
         precioj=precioj-(precioj*0.10);
         desproduc=10;
         
      }
-     contador++;
+     contador++; 
 }
 
  //Datos de salida:
 System.out.println("su descuento es de: "+desproduc);
-System.out.println("el costo total es;"+precioj);
+System.out.println("el costo total es:"+precioj);
 }
 public static void main(String[] arg){
     descuentoproduc();
