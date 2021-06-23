@@ -7,7 +7,9 @@ public class ResoluciondelExamen {
     LeerTeclado teclado=new LeerTeclado();
  //ejercicio 2
     public  void Automotriz() {
+        //Declarar Variables
         int categoria, cant1=0,imp1=12,imp2=8,imp3=5,impt1=0,impt2=0,impt3=0;
+        //Datos de entrada, prceso y salida
         do {
             categoria=teclado.leer(0,"¿Que categoria es su auto: 1-2-3 o 0 para finalizar?");
             
@@ -35,7 +37,6 @@ public class ResoluciondelExamen {
                 System.out.println("Usted debe pagar: "+imp3+"% de su valor");
                 impt3=impt3+imp3;
                 }
-                
                 System.out.println("De toda la categoria se pagara"+impt3+"% de su valor");
                 break;
             default:System.out.println("Opcion incorrecta--escoja entre 1-2-3 o 0 si desea salir");
@@ -50,8 +51,9 @@ public class ResoluciondelExamen {
  }  
  //ejercicio 3
     public  void tabla() {
+          //Declarar Variables
         int num=1;
-
+        //proceso 
         for (int i = 0; i <20; i++) {
         for (int j = 1; j <=10; j++) {
             System.out.println(num+"x"+j+"="+(j*num));
@@ -64,8 +66,9 @@ public class ResoluciondelExamen {
 
      //ejercicio 4
     public  void numerosperfectos() {
+          //Declarar Variables
         int nu,contn=1,suma=0;
-    
+        //Datos de entrada
         nu=teclado.leer(0,"Indique el numero");
             while
             (contn<nu) {
@@ -83,7 +86,7 @@ public class ResoluciondelExamen {
             System.out.println("El numero "+suma+" es perfecto");
         }
         else {
-            System.out.println("El numero "+suma+" no es perfecto");
+            System.out.println("El numero  no es perfecto");
         }
         
     } 
@@ -94,10 +97,12 @@ public class ResoluciondelExamen {
      //ejercicio 5
 
     public void exponenten() {
+    //Declarar Variables
      int base,exponente;
+     //Datos de entrada
      base=teclado.leer(0,"Ingrese la base ");
      exponente=teclado.leer(0,"Ingrese el exponente ");
-
+    //proceso
      System.out.println(base+"^"+exponente+"="+recursividad(base,exponente));
 
         }

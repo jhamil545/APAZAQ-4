@@ -17,8 +17,8 @@ public class App
         
         //obsjn.Automotriz();
         //obsjn.tabla();    
-        //obsjn.numerosperfectos();
-        obsjn.exponenten();
+        obsjn.numerosperfectos();
+        //obsjn.exponenten();
     
 
     }
