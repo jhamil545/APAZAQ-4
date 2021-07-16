@@ -15,9 +15,9 @@ public class App
         ResoluciondelExamen obsjn=new ResoluciondelExamen();
         //LeerTeclado objn=new LeerTeclado();
         
-        //obsjn.Automotriz();
+        obsjn.Automotriz();
         //obsjn.tabla();    
-        obsjn.numerosperfectos();
+        //obsjn.numerosperfectos();
         //obsjn.exponenten();
     
 

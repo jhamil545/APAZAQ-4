@@ -1,0 +1,2 @@
+U1	jhamil	1452	ADMIN
+U2	pedro	458	VENDEDOR

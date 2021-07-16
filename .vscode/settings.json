@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "trabajo2",
         "est-repetitive",
         "classmate",
-        "trabajo2"
+        "Classmateproyec/src/main/java/pe/edu/upeu/classmateproyec"
     ]
 }

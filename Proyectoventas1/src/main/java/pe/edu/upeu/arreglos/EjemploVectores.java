@@ -7,7 +7,7 @@ public class EjemploVectores {
     public static void conceptosvectores() {
         //Definir un vector
         int[] vectorX;
-        int []vectorY;
+        //int []vectorY;
         //Definir tamaño del vectorY
         vectorX=new int[2];
         vectorX[0]=20;//[0] indice o posicion
@@ -16,7 +16,7 @@ public class EjemploVectores {
         System.out.println("Imprimiendo valores del vector");
         System.out.println(vectorX[0]);//Imprimiendo valor o elemento del vectorX[0]
         // asignando valores directos a un vector
-        int[] vA={12,2,3,4,5,6,7,8,9,10};
+        //int[] vA={12,2,3,4,5,6,7,8,9,10};
         int[] vB=new int[]{12,2,3,4,5,6,7,8,9,10,13,14};
         //conocer tamaño del vector 
         System.out.println(" longitud del vector vB= "+(vB.length));

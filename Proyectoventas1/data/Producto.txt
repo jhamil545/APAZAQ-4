@@ -1,0 +1,2 @@
+P1	Sandia	kilos	C1	1.0	0.2	5.0
+P2	Pepino	Kilos	C2	3.0	0.5	20.0
