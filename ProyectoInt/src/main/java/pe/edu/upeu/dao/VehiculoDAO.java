@@ -1,5 +1,8 @@
 package pe.edu.upeu.dao;
 
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+
 import pe.edu.upeu.data.AppCrud;
 import pe.edu.upeu.modelo.VehiculoTO;
 import pe.edu.upeu.util.LeerArchivo;
@@ -7,6 +10,7 @@ import pe.edu.upeu.util.LeerTeclado;
 import pe.edu.upeu.util.UtilsX;
 
 public class VehiculoDAO extends AppCrud {
+    Ansi color=new Ansi();
     LeerArchivo lar;
     VehiculoTO vehTO;
 
@@ -14,6 +18,8 @@ public class VehiculoDAO extends AppCrud {
     UtilsX ut=new UtilsX();
 
     public void registrarVehiculos() {
+        AnsiConsole.systemInstall();
+        System.out.println(color.render("| @|green **REGISTRAR VEHICULOS**|@"));
         vehTO=new VehiculoTO();
         lar=new LeerArchivo("Vehiculo.txt");
         vehTO.setIdVehiculos(generarId(lar,0,"V", 1));

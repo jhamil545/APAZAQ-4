@@ -2,6 +2,9 @@ package pe.edu.upeu.dao;
 
 
 
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+
 import pe.edu.upeu.data.AppCrud;
 import pe.edu.upeu.modelo.ItinerarioViajesTO;
 import pe.edu.upeu.modelo.VehiculoTO;
@@ -12,6 +15,7 @@ import pe.edu.upeu.util.UtilsX;
 
 
 public class ItinerarioViajeDAO extends AppCrud {
+    Ansi color=new Ansi();
     LeerArchivo  lar;
     VehiculoTO vehTO;
     ItinerarioViajesTO itiviTO;
@@ -21,14 +25,15 @@ public class ItinerarioViajeDAO extends AppCrud {
     UtilsX ut=new UtilsX();
    
     public void registrarItinerarioViajes() {
-        System.out.println("******Regisrto de Itinerarios viajes*******");
+        AnsiConsole.systemInstall();
+        System.out.println(color.render("| @|green **REGISTRAR ITINERARIOS**|@"));
         mostrarItinerarios();
         itiviTO=new ItinerarioViajesTO();
         itiviTO.setIdVehiculo(tre.read("", "Seleccione el vehiculo:"));
         mostrarCategoriaZona();
         itiviTO.setZona(tre.read("", "Seleccione la zona:"));         
         lar=new LeerArchivo("Itinerario.txt");
-        itiviTO.setIdItinerario(generarId(lar, 0, "I", 1));
+        itiviTO.setIdItinerario(generarId(lar, 0, "IT", 2));
         itiviTO.setFecha(tre.read("","Ingrese la fecha formato dd-MM-yyyy"));
         itiviTO.setHoraSalida(tre.read("","Ingrese hora formato 24 horas"));
         itiviTO.setCanPasaje(tre.read(0, "Indique cuantos pasajeros van en el vehiculo"));

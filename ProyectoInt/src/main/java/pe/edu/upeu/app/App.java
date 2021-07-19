@@ -5,6 +5,7 @@ import pe.edu.upeu.dao.EgresosDAO;
 import pe.edu.upeu.dao.IngresosDAO;
 import pe.edu.upeu.dao.ItinerarioViajeDAO;
 import pe.edu.upeu.dao.OperacionEgresosDAO;
+import pe.edu.upeu.dao.ReporteInyEgreDAO;
 import pe.edu.upeu.dao.TipoDAO;
 import pe.edu.upeu.dao.UsuarioDAO;
 import pe.edu.upeu.dao.VehiculoDAO;
@@ -13,6 +14,8 @@ import pe.edu.upeu.util.LeerTeclado;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 import static org.fusesource.jansi.Ansi.Color.*;
+import java.math.*;
+import java.security.MessageDigest;
 
 /**
  * Hello world!
@@ -22,20 +25,28 @@ public class App {
     static Ansi color=new Ansi(); 
 
     public static void menuMain() {
+        
         String mensaje="Seleccion el algoritmo que desea probar:"+
         "\n1=Registrar Zona"+
+        "\n11=Reporte Zona"+
         "\n2=Registrar Tipo"+
+        "\n21=Reporte Tipo"+
         "\n3=Registrar Vehiculos"+
+        "\n31=Reporte Vehiculos"+
         "\n4=Registrar Operacion de egresos"+
+        "\n41=Reporte Operacion de egresos"+
         "\n5=Registrar Conceptos"+
+        "\n51=Reporte Conceptos"+
         "\n6=Registrar Itinerario Viajes"+
+        "\n61=Reporte Itinerario Viajes"+
         "\n7=Registrar Ingresos"+
-        "\n71=Reporte Ingresos por fechas"+
+        //"\n71=Reporte Ingresos "+
         "\n8=Registrar Egresos"+
+        //"\n81=Reporte Egresos"+
         "\n9=Registrar Usuario"+
-        "\n10=Reporte Ventas por fechas"+
+        "\n10=Reporte Ingresos y Egresos"+
         "\n0=Salir del sistema"
-        ;     
+        ;  
         ZonaDAO zonaDAO;  
         TipoDAO tipDAO; 
         VehiculoDAO vehDAO;
@@ -45,9 +56,7 @@ public class App {
         IngresosDAO ingresoTO;
         EgresosDAO egresoTO;
         UsuarioDAO usuarioDAO;
-       /* UsuarioDAO daoUso;
-        ProductoDAO proDao;
-        VentaDAO ventDao;*/
+        ReporteInyEgreDAO ryiDAO;
         LeerTeclado tre=new LeerTeclado();
         int opciones=tre.read(0, mensaje);         
         do {
@@ -65,10 +74,10 @@ public class App {
                 case 6: itiviDAO=new ItinerarioViajeDAO(); itiviDAO.registrarItinerarioViajes();break; 
                 case 61: itiviDAO=new ItinerarioViajeDAO(); itiviDAO.mostrarItinerarios();break;
                 case 7: ingresoTO=new IngresosDAO(); ingresoTO.ingresos();break;
-                case 71: ingresoTO=new IngresosDAO(); ingresoTO.reportarIngresosRangoFecha();break;
+                //case 71: ingresoTO=new IngresosDAO(); ingresoTO.reportarIngresosRangoFecha();break;
                 case 8: egresoTO=new EgresosDAO(); egresoTO.egresos();break; 
                 case 9: usuarioDAO=new UsuarioDAO(); usuarioDAO.registrarUsuario();  break;
-                //case 6: ventDao=new VentaDAO(); ventDao.reportarVentasRangoFecha(); break;   
+                case 10: ryiDAO=new ReporteInyEgreDAO(); ryiDAO.reportarIngresosyEgresos();;break;  
                 default:System.out.println("Opcion no existe");   break;
             }  
 
@@ -84,32 +93,36 @@ public class App {
                       
         }while (opciones!=0);
     }
+    public static String MD5(String s) throws Exception {
+        MessageDigest m=MessageDigest.getInstance("MD5");
+        m.update(s.getBytes(),0,s.length());     
+        return new BigInteger(1,m.digest()).toString(16); }
 
     public static void validAccessSystem() {
         AnsiConsole.systemInstall();
-        System.out.println(color.render("@|red ******************* |@ @|green Sistema de Ingresos y Egresos //TAURUS//|@ @|red ******************|@"));
-        //System.out.println("******************* Sistema de Ingresos y Egresos //TAURUS// ******************");
+        System.out.println(color.render("@|red ******************* |@ @|green Sistema de Ingresos y Egresos //TAURUS//|@ @|red *******************|@"));
         LeerTeclado tr=new LeerTeclado();
         UsuarioDAO uDao=new UsuarioDAO();
         String usuario=tr.read("", "Ingrese su Usuario:");
         System.out.println("Ingrese su clave:");
         char[] clave=System.console().readPassword();
-        if (uDao.login(usuario,clave)) {
-            menuMain();
-        } else {
-            System.out.println("Error de autentifiacion.......Intetente nuevamente!!");
-            validAccessSystem();
+        try {
+            
+            if (uDao.login(usuario,clave)) {
+                menuMain();
+            } else {
+                System.out.println("Error de autentifiacion.......Intetente nuevamente!!");
+                validAccessSystem();
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
         }
+       
     }
 
 
     public static void main( String[] args ){
         //menuMain();
-        //AnsiConsole.systemInstall();        
-        //System.out.println( color.bgBrightGreen().fg(RED).a("Hello").fg(BLACK).a(" World").reset() );        
-        /*System.out.println(color.render("Resumen: @|red Neto Total:S/. |@ @|green "+(Math.round(40.54411*100.0)/100.0)+
-        "|@ | @|red IGV: S/.|@ @|green "+(Math.round(15.3333*100.0)/100.0)+"|@  | @|red Monto total: S/. |@ @|green "+
-        (Math.round(53.4100*100.0)/100.0)+"|@"));  */ 
         validAccessSystem();
        
     }

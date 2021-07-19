@@ -10,8 +10,12 @@ import pe.edu.upeu.modelo.OperacionEgresosTO;
 import pe.edu.upeu.util.LeerArchivo;
 import pe.edu.upeu.util.LeerTeclado;
 import pe.edu.upeu.util.UtilsX;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+import static org.fusesource.jansi.Ansi.Color.*;
 
 public class EgresosDAO extends AppCrud{
+    Ansi color=new Ansi();
     LeerArchivo  lar;
     ConceptosTO consTO;
     EgresosTO egresoTO;
@@ -23,7 +27,8 @@ public class EgresosDAO extends AppCrud{
     SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");  
     
     public void egresos() {
-        System.out.println("******Regisrto de Egresos*******");
+        AnsiConsole.systemInstall();
+        System.out.println(color.render("| @|green **REGISTRAR  EGRESOS**|@"));
         mostrarCategoriaConceptos();
         egresoTO=new EgresosTO();
         egresoTO.setIdConceptos(tre.read("", "Indique el concepto:"));
@@ -63,4 +68,5 @@ public class EgresosDAO extends AppCrud{
         }
         System.out.println("");
     }
+    
 }

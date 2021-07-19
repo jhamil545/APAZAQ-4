@@ -1,0 +1,2 @@
+Z1	Juliaca	Arequipa	25.0
+Z2	Arequipa	Juliaca	30.0

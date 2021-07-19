@@ -1,0 +1,2 @@
+T1	Ingresos
+T2	Egresos

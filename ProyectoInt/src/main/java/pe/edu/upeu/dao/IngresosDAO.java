@@ -27,14 +27,15 @@ public class IngresosDAO extends AppCrud {
         SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");  
         
         public void ingresos() {
-            System.out.println("******Regisrto de Ingresos*******");
-            mostrarCategoriaConceptos();
+            AnsiConsole.systemInstall();
+        System.out.println(color.render("| @|green **REGISTRAR INGRESOS**|@"));
+            mostrarConceptos();
             ingresoTO=new IngresosTO();
             ingresoTO.setIdConceptos(tre.read("", "Indique el concepto:"));
-            mostrarCategoria();
+            mostrarItinerario();
             ingresoTO.setIdItineraio(tre.read("", "Indique el itinerario:"));         
             lar=new LeerArchivo("Ingresos.txt");
-            ingresoTO.setIdOperacion(generarId(lar, 0, "I", 1));
+            ingresoTO.setIdOperacion(generarId(lar, 0, "IN", 2));
             ingresoTO.setFecha(formatoFecha.format(new Date()));
             lar=new LeerArchivo("Itinerario.txt");
             Object[][] datait=buscarContenido(lar, 0, ingresoTO.getIdItineraio());
@@ -47,15 +48,30 @@ public class IngresosDAO extends AppCrud {
             agregarContenido(lar,ingresoTO);
         }
     
-        public void mostrarCategoria() {
+        public void mostrarItinerario() {
             lar=new LeerArchivo("Itinerario.txt");
             Object[][] data=listarContenido(lar);
+            String fechaInit=tre.read("", "Ingrese la fecha  (dd-MM-yyyy):");
+            int cantidadFi=0;
+            for (int i = 0; i < data.length; i++) {
+                    String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
+                    if (fechaInit.equals(dataFechaV[0]) ) { 
+                        System.out.println("h");
+                            cantidadFi++;
+                    }
+                }
+                Object[][] dataRealRF=new Object[cantidadFi][data[0].length];
+                cantidadFi=0;
             for (int i = 0; i < data.length; i++) {//
-                System.out.print(data[i][0]+"="+data[i][1]+" Hrs "+data[i][2]+", ");
+                String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
+                if (fechaInit.equals(dataFechaV[0]) ) { 
+                    
+                System.out.print(data[i][0]+"="+data[i][2]+",");
+            }
             }
             System.out.println("");
         }
-        public void mostrarCategoriaConceptos() {
+        public void mostrarConceptos() {
             lar=new LeerArchivo("Concepto.txt");
             Object[][] data=listarContenido(lar);
             for (int i = 0; i < data.length; i++) {//
@@ -63,69 +79,5 @@ public class IngresosDAO extends AppCrud {
             }
             System.out.println("");
         }
-        public void reportarIngresosRangoFecha(){
-            AnsiConsole.systemInstall();
-            lar=new LeerArchivo("Ingresos.txt");
-            System.out.println("************************Reporte de ventas por fechas*************************");
-            String fechaInit=tre.read("", "Ingrese la fecha de Inicio (dd-MM-yyyy):");
-            String fechaFin=tre.read("", "Ingrese fecha final (dd-MM-yyyy):");
-            Object[][] dataV=listarContenido(lar);
-            int cantidadFi=0;
-            try {
-                for (int i = 0; i < dataV.length; i++) {
-                    String[] dataFechaV=String.valueOf(dataV[i][2]).split(" ");
-                    if ((formatoFecha.parse(dataFechaV[0].toString()).after(formatoFecha.parse(fechaInit)) || 
-                        dataFechaV[0].equals(fechaInit))   && (
-                            formatoFecha.parse(dataFechaV[0].toString()).before(formatoFecha.parse(fechaFin)) || 
-                        dataFechaV[0].equals(fechaFin)
-                        )) {
-                            cantidadFi++;
-                    }
-                }
-                System.out.println("Cantidad:"+cantidadFi);
-                Object[][] dataRealRF=new Object[cantidadFi][dataV[0].length];
-                cantidadFi=0;
-                double netoTotalX=0, igvX=0, precioTotalX=0;
-    
-                for (int i = 0; i < dataV.length; i++) {
-                    String[] dataFechaV=String.valueOf(dataV[i][2]).split(" ");
-                    if ((formatoFecha.parse(dataFechaV[0].toString()).after(formatoFecha.parse(fechaInit)) || 
-                        dataFechaV[0].equals(fechaInit))   && (
-                            formatoFecha.parse(dataFechaV[0].toString()).before(formatoFecha.parse(fechaFin)) || 
-                        dataFechaV[0].equals(fechaFin)
-                        )) {
-                            for (int j = 0; j < dataV[0].length; j++) {
-                                dataRealRF[cantidadFi][j]=dataV[i][j];   
-                                if (j==3) { netoTotalX=netoTotalX+Double.parseDouble(dataV[i][j].toString()); }
-                                if (j==4) { igvX=igvX+Double.parseDouble(dataV[i][j].toString()); }
-                                if (j==5) { precioTotalX=precioTotalX+Double.parseDouble(dataV[i][j].toString()); }
-                            }
-                            cantidadFi++;
-                    }
-                }
-    
-                ut.clearConsole();
-                System.out.println("*******************Reporte de Ventas*****************");
-                System.out.println("--------Entre "+fechaInit+" a "+fechaFin+"------------");
-                ut.pintarLine('H', 40);         
-                ut.pintarTextHeadBody('H', 3, "ID,FECHA,IDCONCEPTO,IDITINERARIO.,MONTO S/.");              
-                System.out.println(""); 
-                ut.pintarLine('H', 40);            
-                for (Object[] objects : dataRealRF) {
-                    String datacontent=""+objects[0]+","+objects[1]+","+objects[2]+","+
-                    objects[3]+","+objects[4]+","+objects[5];
-                    ut.pintarTextHeadBody('B', 3, datacontent);
-                }            
-                ut.pintarLine('H', 40);
-                System.out.println(" | Importe Total S/."+(Math.round(precioTotalX*100.0)/100.0));
-                ut.pintarLine('H', 40);
-                System.out.println(color.render("Resumen: @|red monto :S/. |@ @|green "+(Math.round(40.54411*100.0)/100.0)+
-                "|@ | @|red IGV: S/.|@ @|green "+(Math.round(15.3333*100.0)/100.0)+"|@"));
-                
-                
-            } catch (Exception e) {
-                System.out.println("Error-------"+e.getMessage());
-            }
-    
-        }
+        
 }
