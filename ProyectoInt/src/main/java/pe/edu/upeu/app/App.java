@@ -23,7 +23,7 @@ public class App {
 
     public static void menuMain() {
         
-        String mensaje="Seleccion el algoritmo que desea probar:"+
+        String mensaje="Seleccione la obsion que desee:"+
         "\n1=Registrar Zona"+
         "\n11=Reporte Zona"+
         "\n2=Registrar Tipo"+
