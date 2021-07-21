@@ -156,8 +156,5 @@ public class ReporteInyEgreDAO extends AppCrud{
         }
         return monto;
     }
-    public void ganancia(double monto,double total) {
-    double ganancia=total-monto;
-        System.out.println("La ganancia es:"+ganancia);
-    }
+    
 }

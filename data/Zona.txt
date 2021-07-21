@@ -1,2 +1,8 @@
 Z1	Juliaca	Arequipa	25.0
 Z2	Arequipa	Juliaca	30.0
+Z3	Juliaca	Madre de Dios	50.0
+Z4	Madre de Dios 	Juliaca	55.0
+Z5	Juliaca	Cusco	50.0
+Z6	Cusco	Juliaca	45.0
+Z7	Juliaca	Moquegua	40.0
+Z8	Moquegua	Juliaca	35.0

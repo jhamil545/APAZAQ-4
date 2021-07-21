@@ -35,7 +35,7 @@ public class ItinerarioViajeDAO extends AppCrud {
         lar=new LeerArchivo("Itinerario.txt");
         itiviTO.setIdItinerario(generarId(lar, 0, "IT", 2));
         itiviTO.setFecha(tre.read("","Ingrese la fecha formato dd-MM-yyyy"));
-        itiviTO.setHoraSalida(tre.read("","Ingrese hora formato 24 horas"));
+        itiviTO.setHoraSalida(tre.read("","Ingrese hora formato 24 horas HH:mm"));
         itiviTO.setCanPasaje(tre.read(0, "Indique cuantos pasajeros van en el vehiculo"));
         lar=new LeerArchivo("Itinerario.txt");
         agregarContenido(lar,itiviTO);

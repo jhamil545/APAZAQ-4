@@ -72,7 +72,7 @@ public class IngresosDAO extends AppCrud {
             Object[][] data=listarContenido(lar);
             
             for (int i = 0; i < data.length; i++) {//
-                if (data[i][0].equals("C2")) {
+                if (data[i][0].equals("C1")) {
                     System.out.print(data[i][0]+"="+data[i][2]+",");
                 }
             }
