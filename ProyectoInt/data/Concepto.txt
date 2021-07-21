@@ -1,2 +1,3 @@
-C1	T2	Peajes
 C2	T1	Cobro de pasajes
+C1	T2	Peajes
+

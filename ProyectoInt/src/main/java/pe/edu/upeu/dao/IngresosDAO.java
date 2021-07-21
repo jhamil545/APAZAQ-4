@@ -20,12 +20,10 @@ public class IngresosDAO extends AppCrud {
         ConceptosTO consTO;
         IngresosTO ingresoTO;
         ItinerarioViajesTO itiviTO;
-        
         LeerTeclado tre=new LeerTeclado();
         UtilsX ut=new UtilsX();
         SimpleDateFormat formato=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         SimpleDateFormat formatoFecha=new SimpleDateFormat("dd-MM-yyyy");  
-        
         public void ingresos() {
             AnsiConsole.systemInstall();
         System.out.println(color.render("| @|green **REGISTRAR INGRESOS**|@"));
@@ -44,19 +42,18 @@ public class IngresosDAO extends AppCrud {
             ingresoTO.setMonto(Double.parseDouble(datait[0][5].toString())*Double.parseDouble(dataZ[0][3].toString()));
 
             lar=new LeerArchivo("Ingresos.txt");
-            System.out.println("xd"+ingresoTO.getMonto());
+           
             agregarContenido(lar,ingresoTO);
         }
     
         public void mostrarItinerario() {
             lar=new LeerArchivo("Itinerario.txt");
             Object[][] data=listarContenido(lar);
-            String fechaInit=tre.read("", "Ingrese la fecha  (dd-MM-yyyy):");
+            String fechaInit=tre.read("", "Ingrese la fecha del itinerario que desea en formato  (dd-MM-yyyy):");
             int cantidadFi=0;
             for (int i = 0; i < data.length; i++) {
                     String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
                     if (fechaInit.equals(dataFechaV[0]) ) { 
-                        System.out.println("h");
                             cantidadFi++;
                     }
                 }
@@ -65,8 +62,7 @@ public class IngresosDAO extends AppCrud {
             for (int i = 0; i < data.length; i++) {//
                 String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
                 if (fechaInit.equals(dataFechaV[0]) ) { 
-                    
-                System.out.print(data[i][0]+"="+data[i][2]+",");
+                 System.out.print(data[i][0]+"="+data[i][2]+",");
             }
             }
             System.out.println("");
@@ -74,8 +70,11 @@ public class IngresosDAO extends AppCrud {
         public void mostrarConceptos() {
             lar=new LeerArchivo("Concepto.txt");
             Object[][] data=listarContenido(lar);
+            
             for (int i = 0; i < data.length; i++) {//
-                System.out.print(data[i][0]+"="+data[i][2]+",");
+                if (data[i][0].equals("C2")) {
+                    System.out.print(data[i][0]+"="+data[i][2]+",");
+                }
             }
             System.out.println("");
         }

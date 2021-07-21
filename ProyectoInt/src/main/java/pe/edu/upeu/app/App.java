@@ -17,10 +17,7 @@ import static org.fusesource.jansi.Ansi.Color.*;
 import java.math.*;
 import java.security.MessageDigest;
 
-/**
- * Hello world!
- *
- */
+
 public class App {
     static Ansi color=new Ansi(); 
 
@@ -40,9 +37,7 @@ public class App {
         "\n6=Registrar Itinerario Viajes"+
         "\n61=Reporte Itinerario Viajes"+
         "\n7=Registrar Ingresos"+
-        //"\n71=Reporte Ingresos "+
         "\n8=Registrar Egresos"+
-        //"\n81=Reporte Egresos"+
         "\n9=Registrar Usuario"+
         "\n10=Reporte Ingresos y Egresos"+
         "\n0=Salir del sistema"
@@ -74,7 +69,6 @@ public class App {
                 case 6: itiviDAO=new ItinerarioViajeDAO(); itiviDAO.registrarItinerarioViajes();break; 
                 case 61: itiviDAO=new ItinerarioViajeDAO(); itiviDAO.mostrarItinerarios();break;
                 case 7: ingresoTO=new IngresosDAO(); ingresoTO.ingresos();break;
-                //case 71: ingresoTO=new IngresosDAO(); ingresoTO.reportarIngresosRangoFecha();break;
                 case 8: egresoTO=new EgresosDAO(); egresoTO.egresos();break; 
                 case 9: usuarioDAO=new UsuarioDAO(); usuarioDAO.registrarUsuario();  break;
                 case 10: ryiDAO=new ReporteInyEgreDAO(); ryiDAO.reportarIngresosyEgresos();;break;  

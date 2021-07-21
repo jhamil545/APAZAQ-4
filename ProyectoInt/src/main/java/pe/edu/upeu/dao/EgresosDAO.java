@@ -52,21 +52,39 @@ public class EgresosDAO extends AppCrud{
         }
         System.out.println("");
     }
+
     public void mostrarCategoriaConceptos() {
+      
         lar=new LeerArchivo("Concepto.txt");
         Object[][] data=listarContenido(lar);
-        for (int i = 0; i < data.length; i++) {//
-            System.out.print(data[i][0]+"="+data[i][1]+"-"+data[i][2]+", ");
+        for (int i = 1; i < data.length; i++) { 
+           
+                System.out.print(data[i][0]+"="+data[i][2]+", ");
+        
         }
         System.out.println("");
     }
+    
     public void mostrarCategoriaIT() {
         lar=new LeerArchivo("Itinerario.txt");
-        Object[][] data=listarContenido(lar);
-        for (int i = 0; i < data.length; i++) {//
-            System.out.print(data[i][0]+"="+data[i][1]+" Hrs "+data[i][1]+", ");
-        }
-        System.out.println("");
+            Object[][] data=listarContenido(lar);
+            String fechaInit=tre.read("", "Ingrese la fecha del itinerario que desea en formato  (dd-MM-yyyy):");
+            int cantidadFi=0;
+            for (int i = 0; i < data.length; i++) {
+                    String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
+                    if (fechaInit.equals(dataFechaV[0]) ) { 
+                            cantidadFi++;
+                    }
+                }
+                Object[][] dataRealRF=new Object[cantidadFi][data[0].length];
+                cantidadFi=0;
+            for (int i = 0; i < data.length; i++) {//
+                String[] dataFechaV=String.valueOf(data[i][1]).split(" ");
+                if (fechaInit.equals(dataFechaV[0]) ) {   
+                System.out.print(data[i][0]+"="+data[i][2]+",");
+            }
+            }
+            System.out.println("");
     }
     
 }
