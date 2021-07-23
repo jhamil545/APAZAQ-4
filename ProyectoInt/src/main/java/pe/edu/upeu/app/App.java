@@ -23,7 +23,7 @@ public class App {
 
     public static void menuMain() {
         
-        String mensaje="Seleccione la obsion que desee:"+
+        String mensaje="Seleccione el registro o reporte que desea:"+
         "\n1=Registrar Zona"+
         "\n11=Reporte Zona"+
         "\n2=Registrar Tipo"+
